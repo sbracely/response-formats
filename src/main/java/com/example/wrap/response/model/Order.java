@@ -1,4 +1,4 @@
-package com.example.wrap.response.entity;
+package com.example.wrap.response.model;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
 
