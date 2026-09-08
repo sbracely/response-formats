@@ -16,6 +16,8 @@ public class OrderController {
             "application/vnd.example.wrapped+json"
     })
     public Order getOrder() {
-        return new Order("1");
+        Order order = new Order();
+        order.setId("1");
+        return order;
     }
 }

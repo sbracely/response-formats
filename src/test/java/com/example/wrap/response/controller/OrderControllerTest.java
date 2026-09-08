@@ -1,14 +1,13 @@
 package com.example.wrap.response.controller;
 
-import com.example.wrap.response.config.WrappedJsonConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.boot.webtestclient.autoconfigure.AutoConfigureWebTestClient;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
+
+import java.nio.charset.StandardCharsets;
 
 
 @SpringBootTest
@@ -27,6 +26,13 @@ class OrderControllerTest {
                 .expectStatus().isOk()
                 .expectHeader().contentTypeCompatibleWith(MediaType.APPLICATION_JSON)
                 .expectBody()
+                .consumeWith(responseBody -> {
+                    String json = null;
+                    if (responseBody.getResponseBody() != null) {
+                        json = new String(responseBody.getResponseBody(), StandardCharsets.UTF_8);
+                    }
+                    IO.println(json);
+                })
                 .json("""
                         {
                           "id": "1"
@@ -45,6 +51,7 @@ class OrderControllerTest {
                 .expectBody()
                 .xml("""
                         <OrderValue xmlns="OrderNamespace">
+                            <customerId xmlns="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
                             <id xmlns="">1</id>
                         </OrderValue>
                         """);
