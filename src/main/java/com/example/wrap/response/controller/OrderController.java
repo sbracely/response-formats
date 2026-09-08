@@ -1,5 +1,6 @@
 package com.example.wrap.response.controller;
 
+import com.example.wrap.response.MediaTypes;
 import com.example.wrap.response.model.Order;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,9 @@ public class OrderController {
     @GetMapping(produces = {
             MediaType.APPLICATION_JSON_VALUE,
             MediaType.APPLICATION_XML_VALUE,
-            "application/vnd.example.wrapped+json"
+            MediaTypes.WRAPPED_JSON_VALUE,
+            MediaTypes.NON_NULL_JSON_VALUE
+
     })
     public Order getOrder() {
         Order order = new Order();

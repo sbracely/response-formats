@@ -1,5 +1,6 @@
 package com.example.wrap.response.controller;
 
+import com.example.wrap.response.MediaTypes;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -70,10 +71,10 @@ class OrderControllerTest {
     void getOrderReturnsWrappedJson() {
         webTestClient.get()
                 .uri("/order")
-                .accept(MediaType.valueOf("application/vnd.example.wrapped+json"))
+                .accept(MediaTypes.WRAPPED_JSON)
                 .exchange()
                 .expectStatus().isOk()
-                .expectHeader().contentTypeCompatibleWith(MediaType.valueOf("application/vnd.example.wrapped+json"))
+                .expectHeader().contentTypeCompatibleWith(MediaTypes.WRAPPED_JSON)
                 .expectBody()
                 .consumeWith(entityExchangeResult -> {
                     byte[] responseBody = entityExchangeResult.getResponseBody();
@@ -88,6 +89,22 @@ class OrderControllerTest {
                           "OrderValue": {
                             "id": "1"
                           }
+                        }
+                        """);
+    }
+
+    @Test
+    void getOrderReturnsJsonWithoutNullProperties() {
+        webTestClient.get()
+                .uri("/order")
+                .accept(MediaTypes.NON_NULL_JSON)
+                .exchange()
+                .expectStatus().isOk()
+                .expectHeader().contentTypeCompatibleWith(MediaTypes.NON_NULL_JSON)
+                .expectBody()
+                .json("""
+                        {
+                          "id": "1"
                         }
                         """);
     }

@@ -14,7 +14,7 @@ A Spring Boot demo showing how to customize response serialization for different
 
 - `src/main/java/com/example/wrap/response/controller/OrderController.java`
 - `src/main/java/com/example/wrap/response/entity/Order.java`
-- `src/main/java/com/example/wrap/response/config/WrappedJsonConfig.java`
+- `src/main/java/com/example/wrap/response/config/JsonHttpMessageConvertersConfig.java`
 - `src/test/java/com/example/wrap/response/controller/OrderControllerTest.java`
 
 ## Endpoint
