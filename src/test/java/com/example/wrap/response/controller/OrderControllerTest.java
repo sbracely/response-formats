@@ -26,10 +26,11 @@ class OrderControllerTest {
                 .expectStatus().isOk()
                 .expectHeader().contentTypeCompatibleWith(MediaType.APPLICATION_JSON)
                 .expectBody()
-                .consumeWith(responseBody -> {
+                .consumeWith(entityExchangeResult -> {
+                    byte[] responseBody = entityExchangeResult.getResponseBody();
                     String json = null;
-                    if (responseBody.getResponseBody() != null) {
-                        json = new String(responseBody.getResponseBody(), StandardCharsets.UTF_8);
+                    if (responseBody != null) {
+                        json = new String(responseBody, StandardCharsets.UTF_8);
                     }
                     IO.println(json);
                 })
@@ -49,6 +50,14 @@ class OrderControllerTest {
                 .expectStatus().isOk()
                 .expectHeader().contentTypeCompatibleWith(MediaType.APPLICATION_XML)
                 .expectBody()
+                .consumeWith(entityExchangeResult -> {
+                    byte[] responseBody = entityExchangeResult.getResponseBody();
+                    String xml = null;
+                    if (responseBody != null) {
+                        xml = new String(responseBody, StandardCharsets.UTF_8);
+                    }
+                    IO.println(xml);
+                })
                 .xml("""
                         <OrderValue xmlns="OrderNamespace">
                             <customerId xmlns="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
@@ -66,6 +75,14 @@ class OrderControllerTest {
                 .expectStatus().isOk()
                 .expectHeader().contentTypeCompatibleWith(MediaType.valueOf("application/vnd.example.wrapped+json"))
                 .expectBody()
+                .consumeWith(entityExchangeResult -> {
+                    byte[] responseBody = entityExchangeResult.getResponseBody();
+                    String wrappedJson = null;
+                    if (responseBody != null) {
+                        wrappedJson = new String(responseBody, StandardCharsets.UTF_8);
+                    }
+                    IO.println(wrappedJson);
+                })
                 .json("""
                         {
                           "OrderValue": {
