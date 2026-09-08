@@ -1,4 +1,4 @@
-package com.example.wrap.response.model;
+package io.github.sbracely.responseformats.model;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
 

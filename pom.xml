@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>io.github.sbracely</groupId>
-    <artifactId>wrap-response</artifactId>
+    <artifactId>response-formats</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>wrap-response</name>
-    <description>wrap-response</description>
+    <name>response-formats</name>
+    <description>HTTP response formats with custom MediaTypes</description>
     <url/>
     <licenses>
         <license/>

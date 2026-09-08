@@ -1,13 +1,13 @@
-package com.example.wrap.response;
+package io.github.sbracely.responseformats;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WrapResponseApplication {
+public class ResponseFormatsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(WrapResponseApplication.class, args);
+        SpringApplication.run(ResponseFormatsApplication.class, args);
     }
 
 }

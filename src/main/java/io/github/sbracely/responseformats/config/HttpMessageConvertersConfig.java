@@ -1,6 +1,6 @@
-package com.example.wrap.response.config;
+package io.github.sbracely.responseformats.config;
 
-import com.example.wrap.response.MediaTypes;
+import io.github.sbracely.responseformats.media.MediaTypes;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.boot.http.converter.autoconfigure.ServerHttpMessageConvertersCustomizer;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +12,7 @@ import tools.jackson.databind.json.JsonMapper;
 import java.util.List;
 
 @Configuration
-public class JsonHttpMessageConvertersConfig {
+public class HttpMessageConvertersConfig {
 
     @Bean
     ServerHttpMessageConvertersCustomizer jsonHttpMessageConverters(JsonMapper jsonMapper) {

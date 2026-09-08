@@ -1,6 +1,6 @@
-package com.example.wrap.response.controller;
+package io.github.sbracely.responseformats.controller;
 
-import com.example.wrap.response.MediaTypes;
+import io.github.sbracely.responseformats.media.MediaTypes;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,7 +9,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import java.nio.charset.StandardCharsets;
-
 
 @SpringBootTest
 @AutoConfigureWebTestClient
@@ -27,17 +26,10 @@ class OrderControllerTest {
                 .expectStatus().isOk()
                 .expectHeader().contentTypeCompatibleWith(MediaType.APPLICATION_JSON)
                 .expectBody()
-                .consumeWith(entityExchangeResult -> {
-                    byte[] responseBody = entityExchangeResult.getResponseBody();
-                    String json = null;
-                    if (responseBody != null) {
-                        json = new String(responseBody, StandardCharsets.UTF_8);
-                    }
-                    IO.println(json);
-                })
                 .json("""
                         {
-                          "id": "1"
+                          "id": "1",
+                          "customerId": null
                         }
                         """);
     }
@@ -76,18 +68,11 @@ class OrderControllerTest {
                 .expectStatus().isOk()
                 .expectHeader().contentTypeCompatibleWith(MediaTypes.WRAPPED_JSON)
                 .expectBody()
-                .consumeWith(entityExchangeResult -> {
-                    byte[] responseBody = entityExchangeResult.getResponseBody();
-                    String wrappedJson = null;
-                    if (responseBody != null) {
-                        wrappedJson = new String(responseBody, StandardCharsets.UTF_8);
-                    }
-                    IO.println(wrappedJson);
-                })
                 .json("""
                         {
                           "OrderValue": {
-                            "id": "1"
+                            "id": "1",
+                            "customerId": null
                           }
                         }
                         """);

@@ -1,7 +1,7 @@
-package com.example.wrap.response.controller;
+package io.github.sbracely.responseformats.controller;
 
-import com.example.wrap.response.MediaTypes;
-import com.example.wrap.response.model.Order;
+import io.github.sbracely.responseformats.media.MediaTypes;
+import io.github.sbracely.responseformats.model.Order;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

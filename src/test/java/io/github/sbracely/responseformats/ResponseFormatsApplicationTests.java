@@ -1,10 +1,10 @@
-package com.example.wrap.response;
+package io.github.sbracely.responseformats;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WrapResponseApplicationTests {
+class ResponseFormatsApplicationTests {
 
     @Test
     void contextLoads() {
